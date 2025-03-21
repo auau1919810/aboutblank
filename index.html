@@ -2,14 +2,30 @@
 	<head>
 		<script>
 			function go() {
-				let url = 'data:text/html,<meta name="viewport" content="width=device-width, initial-scale=1" /><title>Classroom</title><link rel="icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/1/19/Google_Classroom_Logo.svg"><body style="margin:0"><iframe frameborder="0" allow="autoplay; fullscreen" allowfullscreen="1" style="width:100vw;height:100vh;display:none" title="YouTube video"></iframe><textarea rows="4" cols="42" placeholder="paste your link here" onkeydown="if(event.key!='Enter'&&event.keyCode!=13)return;event.preventDefault();document.querySelector('button').click()"></textarea><br><button onclick="const m=document.querySelector(%27textarea%27).value.match(/.*(?:youtu\.be\/|v\/|u\/\w\/|embed\/|shorts\/|watch\?v=)([^%23\&\?]*).*/);const v=((m&&m[1].length==11)?m[1]:0);if(v){const f=document.querySelector(%27iframe%27);f.src=%27https://www.youtube-nocookie.com/embed/%27+v+%27?autoplay=1&rel=0%27;f.style.display=%27block%27}">Load Video'; //ここにurl
+				let url = 'ytnk.glitch.me'; //ここにurl
 				maskedWindow = window.open();
 				if (!maskedWindow || maskedWindow.closed){
 					alert("ポップアップを許可してください Please allow popup")//ポップアップブロックされたときに出るメッセージ
 				}
 				const doc = maskedWindow.document;
+				doc.title = 'Classroom'; //タイトル
+				function create(htmlStr) {
+					const auau = doc.createDocumentFragment(),
+					temp = doc.createElement('link');
+					temp.innerHTML = htmlStr;
+					while (temp.firstChild) {
+						auau.appendChild(temp.firstChild);
+					}
+					return auau;
+				}
+				const fragment = create('<link rel="icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/1/19/Google_Classroom_Logo.svg">'); //アイコン変更したいならならここのurl変えて
 				doc.head.insertBefore(fragment, doc.head.childNodes[0]);
-				let embed = doc.createElement('embed');
+				let embed = doc.createElement('embed');                
+				if (url.includes('https://') || url.includes('http://')) {
+					embed.src = url;
+				} else {
+					embed.src = 'https://' + url;
+				}
 				embed.width = '100%';
 				embed.height = '100%';
 				embed.style.position = 'fixed';
