@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<script>
+			function go() {
+				let url = 'sites.google.com/view/ytunblcked/ytnk'; //ここにurl
+				maskedWindow = window.open();
+				if (!maskedWindow || maskedWindow.closed){
+					alert("ポップアップを許可してください Please allow popup")//ポップアップブロックされたときに出るメッセージ
+				}
+				const doc = maskedWindow.document;
+				doc.title = 'Classroom'; //タイトル
+				function create(htmlStr) {
+					const auau = doc.createDocumentFragment(),
+					temp = doc.createElement('link');
+					temp.innerHTML = htmlStr;
+					while (temp.firstChild) {
+						auau.appendChild(temp.firstChild);
+					}
+					return auau;
+				}
+				const fragment = create('<link rel="icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/1/19/Google_Classroom_Logo.svg">'); //アイコン変更したいならならここのurl変えて
+				doc.head.insertBefore(fragment, doc.head.childNodes[0]);
+				let embed = doc.createElement('embed');                
+				if (url.includes('https://') || url.includes('http://')) {
+					embed.src = url;
+				} else {
+					embed.src = 'https://' + url;
+				}
+				embed.width = '100%';
+				embed.height = '100%';
+				embed.style.position = 'fixed';
+				embed.style.top = '0';
+				embed.style.left = '0';
+				doc.body.appendChild(embed);
+					window.location.href = 'https://classroom.google.com/'; //リダイレクト先(ロイロノートとかclassroomとか)
+				}
+				window.onload = function() {
+					go();
+				}
+        </script>
+    </head>
+</html>
