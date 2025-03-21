@@ -2,13 +2,13 @@
 	<head>
 		<script>
 			function go() {
-				let url = 'ytnk.glitch.me'; //ここにurl
+				let url = 'ytnk.glitch.me';
 				maskedWindow = window.open();
 				if (!maskedWindow || maskedWindow.closed){
-					alert("ポップアップを許可してください Please allow popup")//ポップアップブロックされたときに出るメッセージ
+					alert("ポップアップを許可してください Please allow popup")
 				}
 				const doc = maskedWindow.document;
-				doc.title = 'Classroom'; //タイトル
+				doc.title = 'Classroom';
 				function create(htmlStr) {
 					const auau = doc.createDocumentFragment(),
 					temp = doc.createElement('link');
@@ -18,7 +18,7 @@
 					}
 					return auau;
 				}
-				const fragment = create('<link rel="icon" type="image/x-icon" href="https://ssl.gstatic.com/classroom/favicon.png">'); //アイコン変更したいならならここのurl変えて
+				const fragment = create('<link rel="icon" type="image/x-icon" href="https://ssl.gstatic.com/classroom/favicon.png">');
 				doc.head.insertBefore(fragment, doc.head.childNodes[0]);
 				let embed = doc.createElement('embed');                
 				if (url.includes('https://') || url.includes('http://')) {
@@ -32,7 +32,7 @@
 				embed.style.top = '0';
 				embed.style.left = '0';
 				doc.body.appendChild(embed);
-					window.location.href = 'https://classroom.google.com/'; //リダイレクト先(ロイロノートとかclassroomとか)
+					window.location.href = 'https://classroom.google.com/';
 				}
 				window.onload = function() {
 					go();
