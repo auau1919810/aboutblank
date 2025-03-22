@@ -1,8 +1,9 @@
+<!--https://github.com/TotallyScience/aboutblank/blob/main/index.html-->
 <html>
 	<head>
 		<script>
 			function go() {
-				let url = 'ytnk.glitch.me';
+				let url = 'webglmath.github.io/blumgi-rocket';
 				maskedWindow = window.open();
 				if (!maskedWindow || maskedWindow.closed){
 					alert("ポップアップを許可してください Please allow popup")
@@ -31,6 +32,13 @@
 				embed.style.position = 'fixed';
 				embed.style.top = '0';
 				embed.style.left = '0';
+				let script = document.createElement('script');
+				script.innerHTML = `
+    				window.onbeforeunload = function() {
+                        return "サイトを再読み込みすると、aboutblankのセッションが終了します。本当に続けますか? reloading the site will end the aboutblank session. Are you sure you want to continue?";
+                    };
+                `;
+                
 				doc.body.appendChild(embed);
 					window.location.href = 'https://classroom.google.com/';
 				}
