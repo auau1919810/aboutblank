@@ -1,9 +1,9 @@
-<!--https://github.com/TotallyScience/aboutblank/blob/main/index.html-->
+<!--https://github.com/TotallyScience/aboutblank/blob/main/index.html -->
 <html>
 	<head>
 		<script>
 			function go() {
-				let url = 'webglmath.github.io/blumgi-rocket';
+				let url = 'https://webglmath.github.io/blumgi-rocket'; //ここにurl
 				maskedWindow = window.open();
 				if (!maskedWindow || maskedWindow.closed){
 					alert("ポップアップを許可してください Please allow popup")
@@ -21,7 +21,7 @@
 				}
 				const fragment = create('<link rel="icon" type="image/x-icon" href="https://ssl.gstatic.com/classroom/favicon.png">');
 				doc.head.insertBefore(fragment, doc.head.childNodes[0]);
-				let embed = doc.createElement('embed');                
+				let embed = doc.createElement('embed');
 				if (url.includes('https://') || url.includes('http://')) {
 					embed.src = url;
 				} else {
@@ -38,10 +38,11 @@
                         return "サイトを再読み込みすると、aboutblankのセッションが終了します。本当に続けますか? reloading the site will end the aboutblank session. Are you sure you want to continue?";
                     };
                 `;
-                
 				doc.body.appendChild(embed);
+				doc.body.appendChild(script);
 					window.location.href = 'https://classroom.google.com/';
 				}
+				window.close();
 				window.onload = function() {
 					go();
 				}
